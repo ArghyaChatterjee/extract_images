@@ -40,18 +40,20 @@ $ rosbag play *.bag
 ```
 $ rosrun image_transport republish compressed in:="/topic" raw out:="/new_topic"
 ```
-
 For example:
 ```
 $ rosrun image_transport republish compressed in:=/spot2/camera_front/color/image_raw_throttle/ raw out:=/spot2/camera_front/color/image
 ```
-
+You can also add that as a launch file like this:
+```
+<node pkg="image_transport" type="republish" name="rgb_raw" args="compressed in:=/image_color raw out:=/republish_raw"/>
+```
 4. In other terminal run the roslaunch:
 ```
 $ roslaunch extract_images export_image.launch
 ```
 
-## Usefull commands
+## Useful commands
 To remove the "`count%04i_`" from the file names, install the library rename from Linux, by the command:
 ```
 $ sudo apt install rename
